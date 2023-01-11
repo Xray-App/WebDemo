@@ -16,6 +16,7 @@ an argument from the command line.
 from __future__ import print_function
 
 from os import chdir
+from os import environ
 from os.path import abspath, dirname, join
 try:
     from SocketServer import ThreadingMixIn
@@ -27,7 +28,7 @@ except ImportError:
 
 
 ROOT = join(dirname(abspath(__file__)), 'html')
-PORT = 7272
+PORT = environ.get('PORT', 7272)
 
 
 class DemoServer(ThreadingMixIn, HTTPServer):
